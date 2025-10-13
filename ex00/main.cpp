@@ -1,7 +1,5 @@
 #include "ClapTrap.hpp"
 
-#include "ClapTrap.hpp"
-
 int main()
 {
     ClapTrap c1("Bob");
