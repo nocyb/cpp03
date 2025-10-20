@@ -6,7 +6,7 @@
 /*   By: njung <njung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 13:37:50 by njung             #+#    #+#             */
-/*   Updated: 2025/10/13 16:23:08 by njung            ###   ########.fr       */
+/*   Updated: 2025/10/20 16:01:44 by njung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,24 @@ ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoint
     std::cout << "ClapTrap " << _name << " constructed" << std::endl;
 }
 
-ClapTrap::~ClapTrap()
-{
-    std::cout << "ClapTrap " << _name << " destructed" << std::endl;
+ClapTrap::ClapTrap(const ClapTrap& other) {
+    std::cout << "ClapTrap copy constructor called for " << other._name << std::endl;
+    *this = other;
+}
+
+ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
+    std::cout << "ClapTrap assignment operator called for " << other._name << std::endl;
+    if (this != &other) {
+        _name = other._name;
+        _hitPoints = other._hitPoints;
+        _energyPoints = other._energyPoints;
+        _attackDamage = other._attackDamage;
+    }
+    return *this;
+}
+
+ClapTrap::~ClapTrap() {
+    std::cout << "ClapTrap destructor called for " << _name << std::endl;
 }
 
 void ClapTrap::attack(const std::string& target)

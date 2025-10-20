@@ -1,17 +1,20 @@
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
-int main()
-{
-    ClapTrap c1("Bob");
-    ClapTrap c2("Alice");
-    c1.attack("Alice");
-    c2.takeDamage(5);
-    c2.beRepaired(3);
-    for (int i = 0; i < 11; i++) // no more energy?
-        c1.attack("Dummy");
-    c2.takeDamage(20); // death ?
-    c2.attack("Someone");
-    c2.beRepaired(10);
+int main() {
+    std::cout << "=== Creating first ScavTrap ===" << std::endl;
+    ScavTrap st1("Scavvy");
 
+    std::cout << "\n=== Calling ScavTrap actions ===" << std::endl;
+    st1.attack("target dummy");
+    st1.guardGate();
+
+    std::cout << "\n=== Copy constructing another ScavTrap ===" << std::endl;
+    ScavTrap st2(st1);
+
+    std::cout << "\n=== Creating third ScavTrap and using operator= ===" << std::endl;
+    ScavTrap st3("Temporary");
+    st3 = st1;
+
+    std::cout << "\n=== End of main, destructors will be called ===" << std::endl;
     return 0;
 }
