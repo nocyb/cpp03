@@ -1,28 +1,29 @@
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
+#include <iostream>
 
 int main() {
-    std::cout << "=== Creating first FragTrap ===" << std::endl;
-    FragTrap ft1("Fraggy");
+    std::cout << "=== Creating first DiamondTrap ===" << std::endl;
+    DiamondTrap d1("Bob");
 
-    std::cout << "\n=== Testing basic ClapTrap functions ===" << std::endl;
-    ft1.attack("enemy target");
-    ft1.takeDamage(30);
-    ft1.beRepaired(10);
+    std::cout << "\n=== Basic actions ===" << std::endl;
+    d1.attack("the dummy target");
+    d1.takeDamage(20);
+    d1.beRepaired(10);
 
-    std::cout << "\n=== Testing special ability ===" << std::endl;
-    ft1.highFivesGuys();
+    std::cout << "\n=== Identity check ===" << std::endl;
+    d1.whoAmI();
 
-    std::cout << "\n=== Copy constructing a new FragTrap ===" << std::endl;
-    FragTrap ft2(ft1);
+    std::cout << "\n=== Copy constructing another DiamondTrap ===" << std::endl;
+    DiamondTrap d2(d1);
 
-    std::cout << "\n=== Testing assignment operator ===" << std::endl;
-    FragTrap ft3("Temporary");
-    ft3 = ft1;
+    std::cout << "\n=== Using operator= to copy ===" << std::endl;
+    DiamondTrap d3("Temporary");
+    d3 = d1;
 
-    std::cout << "\n=== Using special ability on each ===" << std::endl;
-    ft2.highFivesGuys();
-    ft3.highFivesGuys();
+    std::cout << "\n=== Testing whoAmI() on both copies ===" << std::endl;
+    d2.whoAmI();
+    d3.whoAmI();
 
-    std::cout << "\n=== End of main, destructors called automatically ===" << std::endl;
+    std::cout << "\n=== End of main, destructors will be called ===" << std::endl;
     return 0;
 }
